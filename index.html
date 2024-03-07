@@ -47,6 +47,107 @@
   </header>
   <!-- Fin del HEADER -->
 
+  <!-- Inicio de MAIN -->
+  <main>
+    <!--
+      ✿～✿～✿～✿～✿～✿～✿～✿～✿～
+                BALANCE
+      ✿～✿～✿～✿～✿～✿～✿～✿～✿～
+      -->
+    <section class="mt-8 mb-6">
+      <div class="flex justify-center gap-10">
+        <div class="flex flex-col">
+          <div class="bg-[#4d82bc] w-[300px] h-[250px] p-4 rounded-lg mb-6 shadow-[0_0_15px] shadow-[#252440]">
+            <h2 class="font-['Montserrat'] text-[#edfffa] text-3xl mb-8 text-center">Balance</h2>
+            <div class="flex flex-col text-lg">
+              <div class="flex items-center mb-7">
+                <p class="font-['Montserrat'] text-[#edfffa]">Ganancias</p>
+                <p class="font-['Montserrat'] ml-auto text-green-500">+$0</p>
+              </div>
+              <div class="flex items-center mb-7">
+                <p class="font-['Montserrat'] text-[#edfffa]">Gastos</p>
+                <p class="font-['Montserrat'] ml-auto text-red-500">-$0</p>
+              </div>
+              <div class="flex items-center">
+                <p class="font-['Montserrat'] text-[#edfffa]">Total</p>
+                <p class="font-['Montserrat'] text-[#edfffa] ml-auto font-bold">$0</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-[#4d82bc] w-[300px] h-[450pxpx] p-6 rounded-lg mb-6 shadow-[0_0_15px] shadow-[#252440]">
+            <div class="flex justify-between items-center mb-8">
+              <h2 class="font-['Montserrat'] text-[#edfffa] text-3xl text-center">Filtros</h2>
+              <button
+                class="font-['Montserrat'] text-[#edfffa] text-lg rounded-3xl bg-[#6a9cde] px-2 py-1 hover:bg-[#97bdf5] hover:scale-95 hover:shadow-[0_0_10px] hover:shadow-blue-300">Ocultar
+                Filtros</button>
+            </div>
+            <div>
+              <div class="mb-5">
+                <label for="filtro-tipo" class="font-['Montserrat'] text-[#edfffa] block text-lg mb-2">Tipo</label>
+                <select id="filtro-tipo" class="font-['Montserrat'] w-full h-10 rounded-lg text-center">
+                  <option value="Todos">Todos</option>
+                  <option value="Ganancias">Ganancias</option>
+                  <option value="Gastos">Gastos</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-5">
+              <h2 class="font-['Montserrat'] text-[#edfffa] block text-lg mb-2">Categorías</h2>
+              <div>
+                <select id="filtro-categoria" class="font-['Montserrat'] w-full h-10 rounded-lg text-center">
+                  <option value="Todas">Todas</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-5">
+              <h2 class="font-['Montserrat'] text-[#edfffa] block text-lg mb-2">Desde</h2>
+              <input type="date" id="filtro-fecha" class="font-['Montserrat'] w-full h-10 rounded-lg text-center">
+            </div>
+            <div class="mb-5">
+              <h2 class="font-['Montserrat'] text-[#edfffa] block text-lg mb-2">Ordenar por</h2>
+              <select id="filtro-orden" class="font-['Montserrat'] w-full h-10 rounded-lg text-center">
+                <option value="Mas_recientes">Más reciente</option>
+                <option value="Menos_recientes">Menos reciente</option>
+                <option value="Mayor_monto">Mayor monto</option>
+                <option value="Menor_monto">Menor monto</option>
+                <option value="A/Z">A/Z</option>
+                <option value="Z/A">Z/A</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#4d82bc] p-6 rounded-lg w-7/12 h-[750px] shadow-[0_0_15px] shadow-[#252440]">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="font-['Montserrat'] text-[#edfffa] text-3xl text-center">Operaciones</h2>
+            <button
+              class="font-['Montserrat'] bg-[#6a9cde] hover:bg-[#97bdf5] text-[#edfffa] p-2 rounded-3xl flex items-center gap-2 hover:scale-95 hover:shadow-[0_0_10px] hover:shadow-blue-300">
+              <img src="./img/icon-plus.png" alt="icon-plus" class="w-8">Nueva
+              operación
+            </button>
+          </div>
+          <div class="hidden">
+            <div class="flex justify-between text-xl text-[#edfffa] font-['Montserrat'] font-bold mb-5">
+              <p class="w-1/14 p-2">Descripción</p>
+              <p class="w-1/4 p-2">Categoría</p>
+              <p class="w-[15%] p-2">Fecha</p>
+              <p class="w-[15%] p-2">Monto</p>
+              <p class="w-[15%] p-2">Acciones</p>
+            </div>
+            <div id="operaciones"></div>
+          </div>
+          <div class="flex flex-col items-center">
+            <img src="./img/balance.svg" alt="balance" class="mb-8 mt-4 max-w-[70%]">
+            <h2 class="font-['Montserrat'] text-center text-[#edfffa] text-2xl font-extrabold mb-2">Sin Resultados</h2>
+            <p class="font-['Montserrat'] text-center text-[#edfffa]">Actualice los filtros o incorpore nuevas
+              operaciones
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
 </body>
 
 </html>
