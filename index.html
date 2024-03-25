@@ -11,10 +11,11 @@
   <script src="https://kit.fontawesome.com/4a256f10f3.js" crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="tailwind.config.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
   <title>AhorrADAs</title>
 </head>
 
-<body class="bg-[#edfffa]">
+<body class="bg-[#edfffa] flex flex-col justify-between min-h-screen">
   <!-- Inicio del HEADER -->
   <header class="bg-[#6a9cde]">
     <nav class="flex justify-between items-center">
@@ -48,7 +49,7 @@
                 BALANCE
       ✿～✿～✿～✿～✿～✿～✿～✿～✿～
       -->
-    <section class=" mt-8 mb-6">
+    <section class=" mt-8 mb-6 hidden">
       <div class="flex justify-center gap-10">
         <div class="flex flex-col">
           <div class="bg-[#4d82bc] w-[300px] h-[250px] p-4 rounded-lg mb-6 shadow-[0_0_15px] shadow-[#252440]">
@@ -137,6 +138,61 @@
             <p class="font-['Montserrat'] text-center text-[#edfffa]">Actualice los filtros o incorpore nuevas
               operaciones
             </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--
+         ✿～✿～✿～✿～✿～✿～✿～✿～✿～
+                  Categorías
+         ✿～✿～✿～✿～✿～✿～✿～✿～✿～
+-->
+    <section id="seccion-categorias" class="mt-4 mb-4">
+      <div class="flex justify-center">
+        <div class="w-[700px] bg-[#4d82bc] px-5 py-3 rounded-lg shadow-[0_0_15px] shadow-[#252440]"
+          id="contenedor-categorias">
+          <div>
+            <h2 class="text-[#edfffa] font-['Montserrat'] text-3xl mt-6 mb-6">Categorías</h2>
+            <div>
+              <div class="mb-5">
+                <label for="categorias-input" class="text-[#edfffa] font-['Montserrat'] text-xl mb-2">Añade una nueva
+                  categoría</label>
+              </div>
+              <div class="flex justify-between mt-3">
+                <input type="text" class="w-10/12 rounded-lg p-2" id="categorias-input">
+                <button
+                  class="font-['Montserrat'] text-[#edfffa] text-lg px-3 rounded-lg bg-[#6a9cde] hover:bg-[#97bdf5] hover:shadow-[0_0_10px] hover:shadow-blue-300"
+                  id="Btn-agregar-categoria">Agregar</button>
+              </div>
+            </div>
+            <div id="categorias-contenedor">
+              <!-- Aquí van las categorias por defecto y las nuevas -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--～✿ EDITAR CATEGORIAS ✿～-->
+    <section class="editor-categorias hidden">
+      <div class="flex justify-center">
+        <div class="w-[700px] bg-[#4d82bc] px-5 py-3 rounded-lg shadow-[0_0_15px] shadow-[#252440]">
+          <h2 class="text-center text-[#edfffa] font-['Montserrat'] text-3xl mt-6 mb-8">Editar Categoría</h2>
+          <div class="mb-10">
+            <div class="mb-3">
+              <label for="text" class="text-[#edfffa] font-['Montserrat'] text-lg mb-2">Nombre</label>
+            </div>
+            <input type="text" class="w-full rounded-lg p-2" id="input-categorias">
+          </div>
+          <div class="flex justify-end gap-4 mb-8">
+            <button
+              class="cancelar-cat font-['Montserrat'] text-[#edfffa] text-lg px-3 rounded-lg bg-[#6a9cde] hover:scale-110 hover:bg-[#97bdf5] hover:shadow-[0_0_10px] hover:shadow-blue-300 hover:text-[#005187]">
+              <i class="fa-solid fa-xmark text-xl text-[#005187] mr-1"></i>Cancelar
+            </button>
+            <button
+              class="editar-la-cat font-['Montserrat'] text-[#edfffa] text-lg px-3 rounded-lg bg-[#6a9cde] hover:scale-110 hover:bg-[#97bdf5] hover:shadow-[0_0_10px] hover:shadow-blue-300 hover:text-[#005187]">
+              <i class=" fa-solid fa-check text-xl text-[#005187] mr-1"></i>Editar
+            </button>
           </div>
         </div>
       </div>
@@ -283,5 +339,6 @@
     </div>
   </footer>
 </body>
+<script src="./main.js"></script>
 
 </html>
