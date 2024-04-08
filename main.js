@@ -1,3 +1,19 @@
+// ～✿Filtros✿～
+
+// Oculta y muestra los filtros
+const filtrosBtn = document.getElementById("filtros-btn");
+const filtros = document.getElementById("filtros");
+
+filtrosBtn.addEventListener("click", () => {
+  if (filtrosBtn.innerText === "Ocultar Filtros") {
+    filtrosBtn.innerText = "Mostrar Filtros";
+    filtros.style.display = "none";
+  } else {
+    filtrosBtn.innerText = "Ocultar Filtros";
+    filtros.style.display = "block";
+  }
+});
+
 // ～✿Categorias✿～
 
 // categorias x defecto
@@ -99,4 +115,14 @@ function editorCategorias() {
 document.querySelector(".cancelar-cat").addEventListener("click", () => {
   document.querySelector(".editor-categorias").style.display = "none";
   document.getElementById("seccion-categorias").style.display = "block";
+});
+
+// Muestra los nombres de las categorias en los filtros
+const categoriasFiltros = document.getElementById("filtro-categoria");
+
+categorias.forEach((categoria) => {
+  categoriasFiltros.insertAdjacentHTML(
+    "beforeend",
+    `<option value="${categoria.name}">${categoria.name}</option>`
+  );
 });
