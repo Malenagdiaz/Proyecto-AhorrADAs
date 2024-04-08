@@ -23,13 +23,13 @@
         <img src=" ./img/icon-cash.png" alt="icon-cash" class="animate-spin-x">
         <h1 class="font-[Montserrat] text-[#edfffa] text-4xl">AhorrADAs</h1>
       </div>
-      <div class="flex gap-6 mr-7">
-        <a href="#"
+      <div class="flex gap-6 mr-7 max-[980px]:hidden">
+        <a href="#" id="balance-btn"
           class="font-[Montserrat] text-[#edfffa] text-xl inline-block p-2 transition-transform transform hover:scale-105 hover:text-[#005187] px-2.5 py-3 relative before:absolute before:w-2/3 before:h-2/3 before:top-0 before:left-0 before:border-t before:border-l before:border-[#005187] before:border-solid after:absolute after:w-2/3 after:h-2/3 after:right-0 after:bottom-0 after:border-b after:border-r after:border-[#005187] after:border-solid hover:after:w-full hover:after:h-full hover:before:w-full hover:before:h-full before:duration-300 after:duration-300"><i
             class="
           fa-solid fa-chart-column mr-2 text-[#cadffb] text-xl"></i>
           Balance</a>
-        <a href="#"
+        <a href="#" id="categorias-btn"
           class="font-[Montserrat] text-[#edfffa] text-xl inline-block p-2 transition-transform transform hover:scale-105 hover:text-[#005187] px-2.5 py-3 relative before:absolute before:w-2/3 before:h-2/3 before:top-0 before:left-0 before:border-t before:border-l before:border-[#005187] before:border-solid after:absolute after:w-2/3 after:h-2/3 after:right-0 after:bottom-0 after:border-b after:border-r after:border-[#005187] after:border-solid hover:after:w-full hover:after:h-full hover:before:w-full hover:before:h-full before:duration-300 after:duration-300"><i
             class="fa-solid fa-tags mr-2 text-[#cadffb] text-xl"></i>
           Categorías</a>
@@ -49,8 +49,8 @@
                 BALANCE
       ✿～✿～✿～✿～✿～✿～✿～✿～✿～
       -->
-    <section class=" mt-8 mb-6 hidden">
-      <div class="flex justify-center gap-10">
+    <section id="seccion-balance" class="mt-8 mb-6">
+      <div class="flex justify-center gap-10 max-[980px]:flex max-[980px]:flex-col max-[980px]:items-center">
         <div class="flex flex-col">
           <div class="bg-[#4d82bc] w-[300px] h-[250px] p-4 rounded-lg mb-6 shadow-[0_0_15px] shadow-[#252440]">
             <h2 class="font-['Montserrat'] text-[#edfffa] text-3xl mb-8 text-center">Balance</h2>
@@ -72,56 +72,59 @@
           <div class="bg-[#4d82bc] w-[300px] h-[450pxpx] p-6 rounded-lg mb-6 shadow-[0_0_15px] shadow-[#252440]">
             <div class="flex justify-between items-center mb-8">
               <h2 class="font-['Montserrat'] text-[#edfffa] text-3xl text-center">Filtros</h2>
-              <button
+              <button id="filtros-btn"
                 class="font-['Montserrat'] text-[#edfffa] text-lg rounded-3xl bg-[#6a9cde] px-2 py-1 hover:bg-[#97bdf5] hover:scale-95 hover:shadow-[0_0_10px] hover:shadow-blue-300">Ocultar
                 Filtros</button>
             </div>
-            <div>
-              <div class="mb-5">
-                <label for="filtro-tipo" class="font-['Montserrat'] text-[#edfffa] block text-lg mb-2">Tipo</label>
-                <select id="filtro-tipo" class="font-['Montserrat'] w-full h-10 rounded-lg text-center">
-                  <option value="Todos">Todos</option>
-                  <option value="Ganancias">Ganancias</option>
-                  <option value="Gastos">Gastos</option>
-                </select>
-              </div>
-            </div>
-            <div class="mb-5">
-              <h2 class="font-['Montserrat'] text-[#edfffa] block text-lg mb-2">Categorías</h2>
+            <div id="filtros">
               <div>
-                <select id="filtro-categoria" class="font-['Montserrat'] w-full h-10 rounded-lg text-center">
-                  <option value="Todas">Todas</option>
+                <div class="mb-5">
+                  <label for="filtro-tipo" class="font-['Montserrat'] text-[#edfffa] block text-lg mb-2">Tipo</label>
+                  <select id="filtro-tipo" class="font-['Montserrat'] w-full h-10 rounded-lg text-center">
+                    <option value="Todos">Todos</option>
+                    <option value="Ganancias">Ganancias</option>
+                    <option value="Gastos">Gastos</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-5">
+                <h2 class="font-['Montserrat'] text-[#edfffa] block text-lg mb-2">Categorías</h2>
+                <div>
+                  <select id="filtro-categoria" class="font-['Montserrat'] w-full h-10 rounded-lg text-center">
+                    <option value="Todas">Todas</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-5">
+                <h2 class="font-['Montserrat'] text-[#edfffa] block text-lg mb-2">Desde</h2>
+                <input type="date" id="filtro-fecha" class="font-['Montserrat'] w-full h-10 rounded-lg text-center">
+              </div>
+              <div class="mb-5">
+                <h2 class="font-['Montserrat'] text-[#edfffa] block text-lg mb-2">Ordenar por</h2>
+                <select id="filtro-orden" class="font-['Montserrat'] w-full h-10 rounded-lg text-center">
+                  <option value="Mas_recientes">Más reciente</option>
+                  <option value="Menos_recientes">Menos reciente</option>
+                  <option value="Mayor_monto">Mayor monto</option>
+                  <option value="Menor_monto">Menor monto</option>
+                  <option value="A/Z">A/Z</option>
+                  <option value="Z/A">Z/A</option>
                 </select>
               </div>
-            </div>
-            <div class="mb-5">
-              <h2 class="font-['Montserrat'] text-[#edfffa] block text-lg mb-2">Desde</h2>
-              <input type="date" id="filtro-fecha" class="font-['Montserrat'] w-full h-10 rounded-lg text-center">
-            </div>
-            <div class="mb-5">
-              <h2 class="font-['Montserrat'] text-[#edfffa] block text-lg mb-2">Ordenar por</h2>
-              <select id="filtro-orden" class="font-['Montserrat'] w-full h-10 rounded-lg text-center">
-                <option value="Mas_recientes">Más reciente</option>
-                <option value="Menos_recientes">Menos reciente</option>
-                <option value="Mayor_monto">Mayor monto</option>
-                <option value="Menor_monto">Menor monto</option>
-                <option value="A/Z">A/Z</option>
-                <option value="Z/A">Z/A</option>
-              </select>
             </div>
           </div>
         </div>
 
-        <div class="bg-[#4d82bc] p-6 rounded-lg w-7/12 h-[750px] shadow-[0_0_15px] shadow-[#252440]">
+        <div class="bg-[#4d82bc] p-6 rounded-lg w-7/12 shadow-[0_0_15px] shadow-[#252440] max-[970px]:w-[300px]">
           <div class="flex justify-between items-center mb-6">
             <h2 class="font-['Montserrat'] text-[#edfffa] text-3xl text-center">Operaciones</h2>
             <button
               class="font-['Montserrat'] bg-[#6a9cde] hover:bg-[#97bdf5] text-[#edfffa] p-2 rounded-3xl flex items-center gap-2 hover:scale-95 hover:shadow-[0_0_10px] hover:shadow-blue-300">
-              <img src="./img/icon-plus.png" alt="icon-plus" class="w-8">Nueva
-              operación
+              <img src="./img/icon-plus.png" alt="icon-plus" class="w-8">
+              <span class="max-[980px]:hidden">Nueva
+                operación</span>
             </button>
           </div>
-          <div class="hidden">
+          <div class=" hidden">
             <div class="flex justify-between text-xl text-[#edfffa] font-['Montserrat'] font-bold mb-5">
               <p class="w-1/14 p-2">Descripción</p>
               <p class="w-1/4 p-2">Categoría</p>
@@ -147,9 +150,10 @@
                   Categorías
          ✿～✿～✿～✿～✿～✿～✿～✿～✿～
 -->
-    <section id="seccion-categorias" class="mt-4 mb-4">
+    <section id="seccion-categorias" class="mt-4 mb-4 hidden">
       <div class="flex justify-center">
-        <div class="w-[700px] bg-[#4d82bc] px-5 py-3 rounded-lg shadow-[0_0_15px] shadow-[#252440]"
+        <div
+          class="w-[700px] bg-[#4d82bc] px-5 py-3 rounded-lg shadow-[0_0_15px] shadow-[#252440] max-[980px]:w-[300px]"
           id="contenedor-categorias">
           <div>
             <h2 class="text-[#edfffa] font-['Montserrat'] text-3xl mt-6 mb-6">Categorías</h2>
@@ -176,7 +180,8 @@
     <!--～✿ EDITAR CATEGORIAS ✿～-->
     <section class="editor-categorias hidden">
       <div class="flex justify-center">
-        <div class="w-[700px] bg-[#4d82bc] px-5 py-3 rounded-lg shadow-[0_0_15px] shadow-[#252440]">
+        <div
+          class="w-[700px] bg-[#4d82bc] px-5 py-3 rounded-lg shadow-[0_0_15px] shadow-[#252440] max-[980px]:w-[300px]">
           <h2 class="text-center text-[#edfffa] font-['Montserrat'] text-3xl mt-6 mb-8">Editar Categoría</h2>
           <div class="mb-10">
             <div class="mb-3">
@@ -184,7 +189,7 @@
             </div>
             <input type="text" class="w-full rounded-lg p-2" id="input-categorias">
           </div>
-          <div class="flex justify-end gap-4 mb-8">
+          <div class="flex justify-end gap-4 mb-8 max-[980px]:flex max-[980px]:justify-center">
             <button
               class="cancelar-cat font-['Montserrat'] text-[#edfffa] text-lg px-3 rounded-lg bg-[#6a9cde] hover:scale-110 hover:bg-[#97bdf5] hover:shadow-[0_0_10px] hover:shadow-blue-300 hover:text-[#005187]">
               <i class="fa-solid fa-xmark text-xl text-[#005187] mr-1"></i>Cancelar
