@@ -1,3 +1,18 @@
+// ～✿Menú Hamburguesa✿～
+document.getElementById("abrir-menu").addEventListener("click", () => {
+  document
+    .getElementById("ventana-menu")
+    .classList.remove("max-[980px]:hidden");
+  document.getElementById("abrir-menu").classList.add("hidden");
+  document.getElementById("cerrar-menu").classList.remove("hidden");
+});
+
+document.getElementById("cerrar-menu").addEventListener("click", () => {
+  document.getElementById("ventana-menu").classList.add("max-[980px]:hidden");
+  document.getElementById("abrir-menu").classList.remove("hidden");
+  document.getElementById("cerrar-menu").classList.add("hidden");
+});
+
 // ～✿Filtros✿～
 
 // Oculta y muestra los filtros

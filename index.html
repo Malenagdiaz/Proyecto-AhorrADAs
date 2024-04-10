@@ -20,24 +20,40 @@
   <!-- Inicio del HEADER -->
   <header class="bg-[#6a9cde]">
     <nav class="flex justify-between items-center">
-      <div class="flex gap-4 ml-5 items-center">
+      <div class="flex gap-4 ml-5 items-center max-[980px]:gap-1 max-[980px]:ml-0">
         <img src=" ./img/icon-cash.png" alt="icon-cash" class="animate-spin-x">
-        <h1 class="font-[Montserrat] text-[#edfffa] text-4xl">AhorrADAs</h1>
+        <h1 class="font-[Montserrat] text-[#edfffa] text-4xl max-[980px]:text-2xl">AhorrADAs</h1>
       </div>
-      <div class="flex gap-6 mr-7 max-[980px]:hidden">
-        <a href="#" id="balance-btn"
-          class="font-[Montserrat] text-[#edfffa] text-xl inline-block p-2 transition-transform transform hover:scale-105 hover:text-[#005187] px-2.5 py-3 relative before:absolute before:w-2/3 before:h-2/3 before:top-0 before:left-0 before:border-t before:border-l before:border-[#005187] before:border-solid after:absolute after:w-2/3 after:h-2/3 after:right-0 after:bottom-0 after:border-b after:border-r after:border-[#005187] after:border-solid hover:after:w-full hover:after:h-full hover:before:w-full hover:before:h-full before:duration-300 after:duration-300"><i
-            class="
-          fa-solid fa-chart-column mr-2 text-[#cadffb] text-xl"></i>
-          Balance</a>
-        <a href="#" id="categorias-btn"
-          class="font-[Montserrat] text-[#edfffa] text-xl inline-block p-2 transition-transform transform hover:scale-105 hover:text-[#005187] px-2.5 py-3 relative before:absolute before:w-2/3 before:h-2/3 before:top-0 before:left-0 before:border-t before:border-l before:border-[#005187] before:border-solid after:absolute after:w-2/3 after:h-2/3 after:right-0 after:bottom-0 after:border-b after:border-r after:border-[#005187] after:border-solid hover:after:w-full hover:after:h-full hover:before:w-full hover:before:h-full before:duration-300 after:duration-300"><i
-            class="fa-solid fa-tags mr-2 text-[#cadffb] text-xl"></i>
-          Categorías</a>
-        <a href="#"
-          class="font-[Montserrat] text-[#edfffa] text-xl inline-block p-2 transition-transform transform hover:scale-105 hover:text-[#005187] px-2.5 py-3 relative before:absolute before:w-2/3 before:h-2/3 before:top-0 before:left-0 before:border-t before:border-l before:border-[#005187] before:border-solid after:absolute after:w-2/3 after:h-2/3 after:right-0 after:bottom-0 after:border-b after:border-r after:border-[#005187] after:border-solid hover:after:w-full hover:after:h-full hover:before:w-full hover:before:h-full before:duration-300 after:duration-300"><i
-            class="fa-solid fa-chart-pie mr-2 text-[#cadffb] text-xl"></i>
-          Reportes</a>
+      <!-- Menú hamburguesa -->
+      <div class="max-[980px]:block max-[980px]:mr-5 max-[980px]:text-xl">
+        <div class="hidden max-[980px]:block">
+          <button id="abrir-menu">
+            <i class="fa-solid fa-bars text-[#005187]"></i>
+          </button>
+          <button id="cerrar-menu" class="hidden">
+            <i class="fa-solid fa-xmark text-[#005187]"></i>
+          </button>
+        </div>
+        <div id="ventana-menu" class="max-[980px]:hidden">
+          <div
+            class="flex gap-6 mr-7 max-[980px]:flex-col max-[980px]:w-full max-[980px]:absolute max-[980px]:left-0 max-[980px]:right-0 max-[980px]:top-[15%] max-[980px]:bg-[#005187] max-[980px]:items-center max-[980px]:p-4">
+            <a href="#" id="balance-btn"
+              class="font-[Montserrat] text-[#edfffa] text-xl inline-block min-[1020px]:p-2 min-[1020px]:transition-transform min-[1020px]:transform min-[1020px]:hover:scale-105 min-[1020px]:hover:text-[#005187] min-[1020px]:px-2.5 min-[1020px]:py-3 min-[1020px]:relative min-[1020px]:before:absolute min-[1020px]:before:w-2/3 min-[1020px]:before:h-2/3 min-[1020px]:before:top-0 min-[1020px]:before:left-0 min-[1020px]:before:border-t min-[1020px]:before:border-l min-[1020px]:before:border-[#005187] min-[1020px]:before:border-solid min-[1020px]:after:absolute min-[1020px]:after:w-2/3 min-[1020px]:after:h-2/3 min-[1020px]:after:right-0 min-[1020px]:after:bottom-0 min-[1020px]:after:border-b min-[1020px]:after:border-r min-[1020px]:after:border-[#005187] min-[1020px]:after:border-solid min-[1020px]:hover:after:w-full min-[1020px]:hover:after:h-full min-[1020px]:hover:before:w-full min-[1020px]:hover:before:h-full min-[1020px]:before:duration-300 min-[1020px]:after:duration-300">
+              <i class="fa-solid fa-chart-column mr-2 text-[#cadffb] text-xl"></i>
+              Balance
+            </a>
+            <a href="#" id="categorias-btn"
+              class="font-[Montserrat] text-[#edfffa] text-xl inline-block min-[1020px]:p-2 min-[1020px]:transition-transform min-[1020px]:transform min-[1020px]:hover:scale-105 min-[1020px]:hover:text-[#005187] min-[1020px]:px-2.5 min-[1020px]:py-3 min-[1020px]:relative min-[1020px]:before:absolute min-[1020px]:before:w-2/3 min-[1020px]:before:h-2/3 min-[1020px]:before:top-0 min-[1020px]:before:left-0 min-[1020px]:before:border-t min-[1020px]:before:border-l min-[1020px]:before:border-[#005187] min-[1020px]:before:border-solid min-[1020px]:after:absolute min-[1020px]:after:w-2/3 min-[1020px]:after:h-2/3 min-[1020px]:after:right-0 min-[1020px]:after:bottom-0 min-[1020px]:after:border-b min-[1020px]:after:border-r min-[1020px]:after:border-[#005187] min-[1020px]:after:border-solid min-[1020px]:hover:after:w-full min-[1020px]:hover:after:h-full min-[1020px]:hover:before:w-full min-[1020px]:hover:before:h-full min-[1020px]:before:duration-300 min-[1020px]:after:duration-300">
+              <i class="fa-solid fa-tags mr-2 text-[#cadffb] text-xl"></i>
+              Categorías
+            </a>
+            <a href="#"
+              class="font-[Montserrat] text-[#edfffa] text-xl inline-block min-[1020px]:p-2 min-[1020px]:transition-transform min-[1020px]:transform min-[1020px]:hover:scale-105 min-[1020px]:hover:text-[#005187] min-[1020px]:px-2.5 min-[1020px]:py-3 min-[1020px]:relative min-[1020px]:before:absolute min-[1020px]:before:w-2/3 min-[1020px]:before:h-2/3 min-[1020px]:before:top-0 min-[1020px]:before:left-0 min-[1020px]:before:border-t min-[1020px]:before:border-l min-[1020px]:before:border-[#005187] min-[1020px]:before:border-solid min-[1020px]:after:absolute min-[1020px]:after:w-2/3 min-[1020px]:after:h-2/3 min-[1020px]:after:right-0 min-[1020px]:after:bottom-0 min-[1020px]:after:border-b min-[1020px]:after:border-r min-[1020px]:after:border-[#005187] min-[1020px]:after:border-solid min-[1020px]:hover:after:w-full min-[1020px]:hover:after:h-full min-[1020px]:hover:before:w-full min-[1020px]:hover:before:h-full min-[1020px]:before:duration-300 min-[1020px]:after:duration-300">
+              <i class="fa-solid fa-chart-pie mr-2 text-[#cadffb] text-xl"></i>
+              Reportes
+            </a>
+          </div>
+        </div>
       </div>
     </nav>
   </header>
