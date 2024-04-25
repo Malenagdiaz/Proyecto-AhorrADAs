@@ -76,17 +76,54 @@ function crearCategoria(categoria) {
         <span class="font-['Montserrat'] text-[#edfffa] text-lg bg-[#6a9cde] px-2 py-1 rounded-lg">${categoria.name}</span>
       </div>
       <div class="flex gap-3 items-center">
-        <button class="editor-cat bg-[#6a9cde] px-3 py-1 rounded-lg"><i class="fa-solid fa-pencil text-xl text-[#edfffa] hover:text-[#005187]"></i></button>
-        <button class="borrar-cat bg-[#6a9cde] px-3 py-1 rounded-lg"><i class="fa-regular fa-trash-can text-xl text-[#edfffa] hover:text-[#005187]"></i></button>
+        <button class="editor-cat bg-[#6a9cde] px-3 py-1 rounded-lg"><i class="fa-solid fa-pencil text-xl text-[#edfffa] hover:text-[#005187] cursor-pointer"></i></button>
+        <button class="borrar-cat bg-[#6a9cde] px-3 py-1 rounded-lg"><i class="fa-regular fa-trash-can text-xl text-[#edfffa] hover:text-[#005187] cursor-pointer"></i></button>
       </div>
     `;
-  // Elimina las categorías
+  // Ventana modal para confirmar o cancelar la eliminación de la categoría
   const borrarCat = catElemento.querySelector(".borrar-cat");
-  borrarCat.addEventListener("click", () => {
+  borrarCat.addEventListener("click", mostrarModal);
+
+  function mostrarModal() {
+    document.getElementById("modal").classList.remove("hidden");
+    document.getElementById("cubierta-modal").classList.remove("hidden");
+
+    const categoryId = catElemento.dataset.categoryId;
+
+    document
+      .getElementById("btn-eliminar-cat")
+      .addEventListener("click", () => {
+        const index = categorias.findIndex((cat) => cat.id === categoryId);
+        categorias.splice(index, 1);
+        catElemento.remove();
+
+        ocultarModal();
+
+        document
+          .getElementById("btn-eliminar-cat")
+          .removeEventListener("click", eliminarCategoria);
+      });
+
+    document
+      .getElementById("btn-cancelar")
+      .addEventListener("click", ocultarModal);
+  }
+
+  function ocultarModal() {
+    document.getElementById("modal").classList.add("hidden");
+    document.getElementById("cubierta-modal").classList.add("hidden");
+  }
+
+  function eliminarCategoria() {
     const index = categorias.findIndex((cat) => cat.id === categoria.id);
     categorias.splice(index, 1);
     catElemento.remove();
-  });
+    ocultarModal();
+  }
+
+  document
+    .getElementById("btn-cancelar")
+    .addEventListener("click", ocultarModal);
 
   return catElemento;
 }
