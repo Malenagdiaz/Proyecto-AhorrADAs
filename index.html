@@ -162,6 +162,50 @@
         </div>
       </div>
     </section>
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="main.js">
+</head>
+
+<body>
+   <!-- Botón para abrir la ventana de nueva operación -->
+   <button id="nueva-operacion-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    Nueva Operación
+  </button>
+     <!-- Ventana de nueva operación -->
+  <div id="nueva-operacion-ventana" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex justify-center items-center hidden">
+    <div class="bg-white p-6 rounded-lg">
+      <h2 class="text-2xl font-bold mb-4">Nueva Operación</h2>
+      <form id="nueva-operacion-form">
+        <div class="mb-4">
+          <label for="tipo-operacion" class="block text-gray-700 font-bold mb-2">Tipo de Operación:</label>
+          <select id="tipo-operacion" class="border border-gray-400 rounded-lg px-4 py-2 w-full">
+            <option value="Ingreso">Ingreso</option>
+            <option value="Gasto">Gasto</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label for="monto" class="block text-gray-700 font-bold mb-2">Monto:</label>
+          <input type="number" id="monto" class="border border-gray-400 rounded-lg px-4 py-2 w-full">
+        </div>
+        <div class="mb-4">
+          <label for="descripcion" class="block text-gray-700 font-bold mb-2">Descripción:</label>
+          <textarea id="descripcion" class="border border-gray-400 rounded-lg px-4 py-2 w-full"></textarea>
+        </div>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Guardar</button>
+        <button id="cerrar-ventana-btn" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ml-4">Cerrar</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+
+</html>
     <!--
          ✿～✿～✿～✿～✿～✿～✿～✿～✿～
                   Categorías
