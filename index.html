@@ -4,12 +4,167 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="main.js">
+=======
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="img/icon-cash.png" type="image/png">
+  <script src="https://kit.fontawesome.com/4a256f10f3.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind.config.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
+  <title>AhorrADAs</title>
 </head>
 
-<body>
-   <!-- Botón para abrir la ventana de nueva operación -->
+<body class="bg-[#edfffa] flex flex-col justify-between min-h-screen">
+  <!-- Inicio del HEADER -->
+  <header class="bg-[#6a9cde]">
+    <nav class="flex justify-between items-center">
+      <div class="flex gap-4 ml-5 items-center max-[980px]:gap-1 max-[980px]:ml-0">
+        <img src=" ./img/icon-cash.png" alt="icon-cash" class="animate-spin-x">
+        <h1 class="font-[Montserrat] text-[#edfffa] text-4xl max-[980px]:text-2xl">AhorrADAs</h1>
+      </div>
+      <!-- Menú hamburguesa -->
+      <div class="max-[980px]:block max-[980px]:mr-5 max-[980px]:text-xl">
+        <div class="hidden max-[980px]:block">
+          <button id="abrir-menu">
+            <i class="fa-solid fa-bars text-[#005187]"></i>
+          </button>
+          <button id="cerrar-menu" class="hidden">
+            <i class="fa-solid fa-xmark text-[#005187]"></i>
+          </button>
+        </div>
+        <div id="ventana-menu" class="max-[980px]:hidden">
+          <div
+            class="flex gap-6 mr-7 max-[980px]:flex-col max-[980px]:w-full max-[980px]:absolute max-[980px]:left-0 max-[980px]:right-0 max-[480px]:top-[12%] max-[768px]:top[5%] max-[980px]:bg-[#005187] max-[980px]:items-center max-[980px]:p-4">
+            <a href=" #" id="balance-btn"
+              class="font-[Montserrat] text-[#edfffa] text-xl inline-block min-[1020px]:p-2 min-[1020px]:transition-transform min-[1020px]:transform min-[1020px]:hover:scale-105 min-[1020px]:hover:text-[#005187] min-[1020px]:px-2.5 min-[1020px]:py-3 min-[1020px]:relative min-[1020px]:before:absolute min-[1020px]:before:w-2/3 min-[1020px]:before:h-2/3 min-[1020px]:before:top-0 min-[1020px]:before:left-0 min-[1020px]:before:border-t min-[1020px]:before:border-l min-[1020px]:before:border-[#005187] min-[1020px]:before:border-solid min-[1020px]:after:absolute min-[1020px]:after:w-2/3 min-[1020px]:after:h-2/3 min-[1020px]:after:right-0 min-[1020px]:after:bottom-0 min-[1020px]:after:border-b min-[1020px]:after:border-r min-[1020px]:after:border-[#005187] min-[1020px]:after:border-solid min-[1020px]:hover:after:w-full min-[1020px]:hover:after:h-full min-[1020px]:hover:before:w-full min-[1020px]:hover:before:h-full min-[1020px]:before:duration-300 min-[1020px]:after:duration-300">
+              <i class="fa-solid fa-chart-column mr-2 text-[#cadffb] text-xl"></i>
+              Balance
+            </a>
+            <a href="#" id="categorias-btn"
+              class="font-[Montserrat] text-[#edfffa] text-xl inline-block min-[1020px]:p-2 min-[1020px]:transition-transform min-[1020px]:transform min-[1020px]:hover:scale-105 min-[1020px]:hover:text-[#005187] min-[1020px]:px-2.5 min-[1020px]:py-3 min-[1020px]:relative min-[1020px]:before:absolute min-[1020px]:before:w-2/3 min-[1020px]:before:h-2/3 min-[1020px]:before:top-0 min-[1020px]:before:left-0 min-[1020px]:before:border-t min-[1020px]:before:border-l min-[1020px]:before:border-[#005187] min-[1020px]:before:border-solid min-[1020px]:after:absolute min-[1020px]:after:w-2/3 min-[1020px]:after:h-2/3 min-[1020px]:after:right-0 min-[1020px]:after:bottom-0 min-[1020px]:after:border-b min-[1020px]:after:border-r min-[1020px]:after:border-[#005187] min-[1020px]:after:border-solid min-[1020px]:hover:after:w-full min-[1020px]:hover:after:h-full min-[1020px]:hover:before:w-full min-[1020px]:hover:before:h-full min-[1020px]:before:duration-300 min-[1020px]:after:duration-300">
+              <i class="fa-solid fa-tags mr-2 text-[#cadffb] text-xl"></i>
+              Categorías
+            </a>
+            <a href="#"
+              class="font-[Montserrat] text-[#edfffa] text-xl inline-block min-[1020px]:p-2 min-[1020px]:transition-transform min-[1020px]:transform min-[1020px]:hover:scale-105 min-[1020px]:hover:text-[#005187] min-[1020px]:px-2.5 min-[1020px]:py-3 min-[1020px]:relative min-[1020px]:before:absolute min-[1020px]:before:w-2/3 min-[1020px]:before:h-2/3 min-[1020px]:before:top-0 min-[1020px]:before:left-0 min-[1020px]:before:border-t min-[1020px]:before:border-l min-[1020px]:before:border-[#005187] min-[1020px]:before:border-solid min-[1020px]:after:absolute min-[1020px]:after:w-2/3 min-[1020px]:after:h-2/3 min-[1020px]:after:right-0 min-[1020px]:after:bottom-0 min-[1020px]:after:border-b min-[1020px]:after:border-r min-[1020px]:after:border-[#005187] min-[1020px]:after:border-solid min-[1020px]:hover:after:w-full min-[1020px]:hover:after:h-full min-[1020px]:hover:before:w-full min-[1020px]:hover:before:h-full min-[1020px]:before:duration-300 min-[1020px]:after:duration-300">
+              <i class="fa-solid fa-chart-pie mr-2 text-[#cadffb] text-xl"></i>
+              Reportes
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- Fin del HEADER -->
+>>>>>>> 8f95ed6c61ff75ed58ec5f5660fdba0113ac47b9
+
+  <!-- Inicio de MAIN -->
+  <main>
+    <!--
+      ✿～✿～✿～✿～✿～✿～✿～✿～✿～
+                BALANCE
+      ✿～✿～✿～✿～✿～✿～✿～✿～✿～
+      -->
+    <section id="seccion-balance" class="mt-8 mb-6 hidden">
+      <div class="flex justify-center gap-10 max-[980px]:flex max-[980px]:flex-col max-[980px]:items-center">
+        <div class="flex flex-col">
+          <div class="bg-[#4d82bc] w-[300px] h-[250px] p-4 rounded-lg mb-6 shadow-[0_0_15px] shadow-[#252440]">
+            <h2 class="font-['Montserrat'] text-[#edfffa] text-3xl mb-8 text-center">Balance</h2>
+            <div class="flex flex-col text-lg">
+              <div class="flex items-center mb-7">
+                <p class="font-['Montserrat'] text-[#edfffa]">Ganancias</p>
+                <p class="font-['Montserrat'] ml-auto text-green-500">+$0</p>
+              </div>
+              <div class="flex items-center mb-7">
+                <p class="font-['Montserrat'] text-[#edfffa]">Gastos</p>
+                <p class="font-['Montserrat'] ml-auto text-red-500">-$0</p>
+              </div>
+              <div class="flex items-center">
+                <p class="font-['Montserrat'] text-[#edfffa]">Total</p>
+                <p class="font-['Montserrat'] text-[#edfffa] ml-auto font-bold">$0</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-[#4d82bc] w-[300px] h-[450pxpx] p-6 rounded-lg mb-6 shadow-[0_0_15px] shadow-[#252440]">
+            <div class="flex justify-between items-center mb-8">
+              <h2 class="font-['Montserrat'] text-[#edfffa] text-3xl text-center">Filtros</h2>
+              <button id="filtros-btn"
+                class="font-['Montserrat'] text-[#edfffa] text-lg rounded-3xl bg-[#6a9cde] px-2 py-1 hover:bg-[#97bdf5] hover:scale-95 hover:shadow-[0_0_10px] hover:shadow-blue-300">Ocultar
+                Filtros</button>
+            </div>
+            <div id="filtros">
+              <div>
+                <div class="mb-5">
+                  <label for="filtro-tipo" class="font-['Montserrat'] text-[#edfffa] block text-lg mb-2">Tipo</label>
+                  <select id="filtro-tipo" class="font-['Montserrat'] w-full h-10 rounded-lg text-center">
+                    <option value="Todos">Todos</option>
+                    <option value="Ganancias">Ganancias</option>
+                    <option value="Gastos">Gastos</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-5">
+                <h2 class="font-['Montserrat'] text-[#edfffa] block text-lg mb-2">Categorías</h2>
+                <div>
+                  <select id="filtro-categoria" class="font-['Montserrat'] w-full h-10 rounded-lg text-center">
+                    <option value="Todas">Todas</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-5">
+                <h2 class="font-['Montserrat'] text-[#edfffa] block text-lg mb-2">Desde</h2>
+                <input type="date" id="filtro-fecha" class="font-['Montserrat'] w-full h-10 rounded-lg text-center">
+              </div>
+              <div class="mb-5">
+                <h2 class="font-['Montserrat'] text-[#edfffa] block text-lg mb-2">Ordenar por</h2>
+                <select id="filtro-orden" class="font-['Montserrat'] w-full h-10 rounded-lg text-center">
+                  <option value="Mas_recientes">Más reciente</option>
+                  <option value="Menos_recientes">Menos reciente</option>
+                  <option value="Mayor_monto">Mayor monto</option>
+                  <option value="Menor_monto">Menor monto</option>
+                  <option value="A/Z">A/Z</option>
+                  <option value="Z/A">Z/A</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#4d82bc] p-6 rounded-lg w-7/12 shadow-[0_0_15px] shadow-[#252440] max-[970px]:w-[300px]">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="font-['Montserrat'] text-[#edfffa] text-3xl text-center">Operaciones</h2>
+            <button
+              class="font-['Montserrat'] bg-[#6a9cde] hover:bg-[#97bdf5] text-[#edfffa] p-2 rounded-3xl flex items-center gap-2 hover:scale-95 hover:shadow-[0_0_10px] hover:shadow-blue-300">
+              <img src="./img/icon-plus.png" alt="icon-plus" class="w-8">
+              <span class="max-[980px]:hidden">Nueva
+                operación</span>
+            </button>
+          </div>
+          <div class=" hidden">
+            <div class="flex justify-between text-xl text-[#edfffa] font-['Montserrat'] font-bold mb-5">
+              <p class="w-1/14 p-2">Descripción</p>
+              <p class="w-1/4 p-2">Categoría</p>
+              <p class="w-[15%] p-2">Fecha</p>
+              <p class="w-[15%] p-2">Monto</p>
+              <p class="w-[15%] p-2">Acciones</p>
+            </div>
+            <div id="operaciones"></div>
+          </div>
+          <div class="flex flex-col items-center">
+            <img src="./img/balance.svg" alt="balance" class="mb-8 mt-4 max-w-[70%]">
+            <h2 class="font-['Montserrat'] text-center text-[#edfffa] text-2xl font-extrabold mb-2">Sin Resultados
+            </h2>
+            <p class="font-['Montserrat'] text-center text-[#edfffa]">Actualice los filtros o incorpore nuevas
+              operaciones
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+      <!-- Botón para abrir la ventana de nueva operación -->
    <button id="nueva-operacion-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
     Nueva Operación
   </button>
@@ -38,7 +193,229 @@
       </form>
     </div>
   </div>
+    <!--
+         ✿～✿～✿～✿～✿～✿～✿～✿～✿～
+                  Categorías
+         ✿～✿～✿～✿～✿～✿～✿～✿～✿～
+-->
+    <section id="seccion-categorias" class="mt-4 mb-4">
+      <div class="flex justify-center">
+        <div
+          class="w-[700px] bg-[#4d82bc] px-5 py-3 rounded-lg shadow-[0_0_15px] shadow-[#252440] max-[980px]:w-[300px]"
+          id="contenedor-categorias">
+          <div>
+            <h2 class="text-[#edfffa] font-['Montserrat'] text-3xl mt-6 mb-6">Categorías</h2>
+            <div>
+              <div class="mb-5">
+                <label for="categorias-input" class="text-[#edfffa] font-['Montserrat'] text-xl mb-2">Añade una nueva
+                  categoría</label>
+              </div>
+              <div class="flex justify-between mt-3">
+                <input type="text" class="w-10/12 rounded-lg p-2" id="categorias-input">
+                <button
+                  class="font-['Montserrat'] text-[#edfffa] text-lg px-3 rounded-lg bg-[#6a9cde] hover:bg-[#97bdf5] hover:shadow-[0_0_10px] hover:shadow-blue-300"
+                  id="Btn-agregar-categoria">Agregar</button>
+              </div>
+            </div>
+            <div id="categorias-contenedor">
+              <!-- Aquí van las categorias por defecto y las nuevas -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ventana modal -->
+      <div class="fixed z-[500] inset-0 overflow-y-auto hidden" id="modal">
+        <div class="flex items-center justify-center min-h-screen">
+          <div class="bg-[#4d82bc] rounded-lg p-8 backdrop-blur-md shadow-[0_0_10px] shadow-[#2b2b4a]">
+            <img src="/img/warning.png" alt="Advertencia" class="w-16 ml-auto mr-auto">
+            <h2 class="font-['Montserrat'] text-[#531b1b] text-xl font-bold text-center mt-4">¡Advertencia!</h2>
+            <p class="font-['Montserrat'] text-[#edfffa] text-center mt-2">¿Seguro que quieres eliminar esta categoría?
+            </p>
+            <div class="flex justify-center mt-4">
+              <button id="btn-eliminar-cat"
+                class="font-['Montserrat'] text-[#edfffa] py-2 px-3 rounded-lg bg-[#6a9cde] mr-4 hover:bg-[#97bdf5] hover:shadow-[0_0_10px] hover:shadow-blue-300">
+                Confirmar
+              </button>
+              <button id="btn-cancelar"
+                class="font-['Montserrat'] text-[#edfffa] py-2 px-3 rounded-lg bg-[#6a9cde] hover:bg-[#97bdf5] hover:shadow-[0_0_10px] hover:shadow-blue-300">
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 backdrop-filter backdrop-blur-md z-[1] hidden"
+        id="cubierta-modal">
+      </div>
+    </section>
 
+    <!--～✿ EDITAR CATEGORIAS ✿～-->
+    <section class="editor-categorias hidden">
+      <div class="flex justify-center">
+        <div
+          class="w-[700px] bg-[#4d82bc] px-5 py-3 rounded-lg shadow-[0_0_15px] shadow-[#252440] max-[980px]:w-[300px]">
+          <h2 class="text-center text-[#edfffa] font-['Montserrat'] text-3xl mt-6 mb-8">Editar Categoría</h2>
+          <div class="mb-10">
+            <div class="mb-3">
+              <label for="text" class="text-[#edfffa] font-['Montserrat'] text-lg mb-2">Nombre</label>
+            </div>
+            <input type="text" class="w-full rounded-lg p-2" id="input-categorias">
+          </div>
+          <div class="flex justify-end gap-4 mb-8 max-[980px]:flex max-[980px]:justify-center">
+            <button
+              class="cancelar-cat font-['Montserrat'] text-[#edfffa] text-lg px-3 rounded-lg bg-[#6a9cde] hover:scale-110 hover:bg-[#97bdf5] hover:shadow-[0_0_10px] hover:shadow-blue-300 hover:text-[#005187]">
+              <i class="fa-solid fa-xmark text-xl text-[#005187] mr-1"></i>Cancelar
+            </button>
+            <button
+              class="editar-la-cat font-['Montserrat'] text-[#edfffa] text-lg px-3 rounded-lg bg-[#6a9cde] hover:scale-110 hover:bg-[#97bdf5] hover:shadow-[0_0_10px] hover:shadow-blue-300 hover:text-[#005187]">
+              <i class=" fa-solid fa-check text-xl text-[#005187] mr-1"></i>Editar
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Inicio de FOOTER -->
+  <footer class="bg-[#6a9cde] h-[7vh] flex items-center">
+    <div class="flex overflow-hidden text-nowrap">
+      <div class="flex animate-scroll gap-10">
+        <div class="flex animate-scroll">
+          <p class="font-['Montserrat'] text-lg text-[#edfffa]">Hecho con 🤍 por WebWiseWomen</p>
+        </div>
+        <div class="flex animate-scroll">
+          <p class="font-['Montserrat'] text-lg text-[#edfffa]">Malena:</p>
+        </div>
+        <div class="flex animate-scroll">
+          <a href="https://github.com/Malenagdiaz" target="_blank"
+            class="font-['Montserrat'] text-[#edfffa] text-lg hover:text-[#005187]">
+            <span><i class="fa-brands fa-github text-[#005187] text-xl mr-2"></i></span>
+            Malenagdiaz</a>
+        </div>
+        <div class="flex animate-scroll">
+          <a href="https://www.linkedin.com/in/malena-gerez-diaz" target="_blank"
+            class="font-['Montserrat'] text-[#edfffa] text-lg hover:text-[#005187]">
+            <span><i class="fa-brands fa-linkedin text-[#005187] text-xl mr-2"></i></span>
+            Malena Gerez Diaz</a>
+        </div>
+        <div class="flex animate-scroll">
+          <p class="font-['Montserrat'] text-lg text-[#edfffa]">Lucia:</p>
+        </div>
+        <div class="flex animate-scroll">
+          <a href="https://github.com/luciamazzitelli" target="_blank"
+            class="font-['Montserrat'] text-[#edfffa] text-lg hover:text-[#005187]">
+            <span><i class="fa-brands fa-github text-[#005187] text-xl mr-2"></i></span>
+            luciamazzitelli</a>
+        </div>
+        <div class="flex animate-scroll">
+          <a href="https://www.linkedin.com/in/lucia-mazzitelli" target="_blank"
+            class="font-['Montserrat'] text-[#edfffa] text-lg hover:text-[#005187]">
+            <span><i class="fa-brands fa-linkedin text-[#005187] text-xl mr-2"></i></span>
+            Lucia Mazzitelli</a>
+        </div>
+        <div class="flex animate-scroll">
+          <p class="font-['Montserrat'] text-lg text-[#edfffa]">Hecho con 🤍 por WebWiseWomen</p>
+        </div>
+        <div class="flex animate-scroll">
+          <p class="font-['Montserrat'] text-lg text-[#edfffa]">Malena:</p>
+        </div>
+        <div class="flex animate-scroll">
+          <a href="https://github.com/Malenagdiaz" target="_blank"
+            class="font-['Montserrat'] text-[#edfffa] text-lg hover:text-[#005187]">
+            <span><i class="fa-brands fa-github text-[#005187] text-xl mr-2"></i></span>
+            Malenagdiaz</a>
+        </div>
+        <div class="flex animate-scroll">
+          <a href="https://www.linkedin.com/in/malena-gerez-diaz" target="_blank"
+            class="font-['Montserrat'] text-[#edfffa] text-lg hover:text-[#005187]">
+            <span><i class="fa-brands fa-linkedin text-[#005187] text-xl mr-2"></i></span>
+            Malena Gerez Diaz</a>
+        </div>
+        <div class="flex animate-scroll">
+          <p class="font-['Montserrat'] text-lg text-[#edfffa]">Lucia:</p>
+        </div>
+        <div class="flex animate-scroll">
+          <a href="https://github.com/luciamazzitelli" target="_blank"
+            class="font-['Montserrat'] text-[#edfffa] text-lg hover:text-[#005187]">
+            <span><i class="fa-brands fa-github text-[#005187] text-xl mr-2"></i></span>
+            luciamazzitelli</a>
+        </div>
+        <div class="flex animate-scroll">
+          <a href="https://www.linkedin.com/in/lucia-mazzitelli" target="_blank"
+            class="font-['Montserrat'] text-[#edfffa] text-lg hover:text-[#005187]">
+            <span><i class="fa-brands fa-linkedin text-[#005187] text-xl mr-2"></i></span>
+            Lucia Mazzitelli</a>
+        </div>
+        <div class="flex animate-scroll">
+          <p class="font-['Montserrat'] text-lg text-[#edfffa]">Hecho con 🤍 por WebWiseWomen</p>
+        </div>
+        <div class="flex animate-scroll">
+          <p class="font-['Montserrat'] text-lg text-[#edfffa]">Malena:</p>
+        </div>
+        <div class="flex animate-scroll">
+          <a href="https://github.com/Malenagdiaz" target="_blank"
+            class="font-['Montserrat'] text-[#edfffa] text-lg hover:text-[#005187]">
+            <span><i class="fa-brands fa-github text-[#005187] text-xl mr-2"></i></span>
+            Malenagdiaz</a>
+        </div>
+        <div class="flex animate-scroll">
+          <a href="https://www.linkedin.com/in/malena-gerez-diaz" target="_blank"
+            class="font-['Montserrat'] text-[#edfffa] text-lg hover:text-[#005187]">
+            <span><i class="fa-brands fa-linkedin text-[#005187] text-xl mr-2"></i></span>
+            Malena Gerez Diaz</a>
+        </div>
+        <div class="flex animate-scroll">
+          <p class="font-['Montserrat'] text-lg text-[#edfffa]">Lucia:</p>
+        </div>
+        <div class="flex animate-scroll">
+          <a href="https://github.com/luciamazzitelli" target="_blank"
+            class="font-['Montserrat'] text-[#edfffa] text-lg hover:text-[#005187]">
+            <span><i class="fa-brands fa-github text-[#005187] text-xl mr-2"></i></span>
+            luciamazzitelli</a>
+        </div>
+        <div class="flex animate-scroll">
+          <a href="https://www.linkedin.com/in/lucia-mazzitelli" target="_blank"
+            class="font-['Montserrat'] text-[#edfffa] text-lg hover:text-[#005187]">
+            <span><i class="fa-brands fa-linkedin text-[#005187] text-xl mr-2"></i></span>
+            Lucia Mazzitelli</a>
+        </div>
+        <div class="flex animate-scroll">
+          <p class="font-['Montserrat'] text-lg text-[#edfffa]">Hecho con 🤍 por WebWiseWomen</p>
+        </div>
+        <div class="flex animate-scroll">
+          <p class="font-['Montserrat'] text-lg text-[#edfffa]">Malena:</p>
+        </div>
+        <div class="flex animate-scroll">
+          <a href="https://github.com/Malenagdiaz" target="_blank"
+            class="font-['Montserrat'] text-[#edfffa] text-lg hover:text-[#005187]">
+            <span><i class="fa-brands fa-github text-[#005187] text-xl mr-2"></i></span>
+            Malenagdiaz</a>
+        </div>
+        <div class="flex animate-scroll">
+          <a href="https://www.linkedin.com/in/malena-gerez-diaz" target="_blank"
+            class="font-['Montserrat'] text-[#edfffa] text-lg hover:text-[#005187]">
+            <span><i class="fa-brands fa-linkedin text-[#005187] text-xl mr-2"></i></span>
+            Malena Gerez Diaz</a>
+        </div>
+        <div class="flex animate-scroll">
+          <p class="font-['Montserrat'] text-lg text-[#edfffa]">Lucia:</p>
+        </div>
+        <div class="flex animate-scroll">
+          <a href="https://github.com/luciamazzitelli" target="_blank"
+            class="font-['Montserrat'] text-[#edfffa] text-lg hover:text-[#005187]">
+            <span><i class="fa-brands fa-github text-[#005187] text-xl mr-2"></i></span>
+            luciamazzitelli</a>
+        </div>
+        <div class="flex animate-scroll">
+          <a href="https://www.linkedin.com/in/lucia-mazzitelli" target="_blank"
+            class="font-['Montserrat'] text-[#edfffa] text-lg hover:text-[#005187]">
+            <span><i class="fa-brands fa-linkedin text-[#005187] text-xl mr-2"></i></span>
+            Lucia Mazzitelli</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
+<script src="./main.js"></script>
 
 </html>
