@@ -59,8 +59,6 @@ const categorias = [
   },
 ];
 
-console.log(categorias);
-
 // Agrega las nuevas categorías
 
 const categoriasContenedor = document.getElementById("categorias-contenedor");
