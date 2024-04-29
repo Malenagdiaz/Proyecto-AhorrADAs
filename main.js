@@ -1,3 +1,29 @@
+// ～✿Botones✿～
+const balanceBtn = document.getElementById("balance-btn");
+const categoriasBtn = document.getElementById("categorias-btn");
+const reportesBtn = document.getElementById("reportes-btn");
+const seccionB = document.getElementById("seccion-balance");
+const seccionC = document.getElementById("seccion-categorias");
+const seccionR = document.getElementById("seccion-reportes");
+
+balanceBtn.addEventListener("click", () => {
+  seccionB.classList.remove("hidden");
+  seccionC.classList.add("hidden");
+  seccionR.classList.add("hidden");
+});
+
+categoriasBtn.addEventListener("click", () => {
+  seccionB.classList.add("hidden");
+  seccionC.classList.remove("hidden");
+  seccionR.classList.add("hidden");
+});
+
+reportesBtn.addEventListener("click", () => {
+  seccionB.classList.add("hidden");
+  seccionC.classList.add("hidden");
+  seccionR.classList.remove("hidden");
+});
+
 // ～✿Menú Hamburguesa✿～
 document.getElementById("abrir-menu").addEventListener("click", () => {
   document
