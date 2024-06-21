@@ -7,21 +7,21 @@ const seccionC = document.getElementById("seccion-categorias");
 const seccionR = document.getElementById("seccion-reportes");
 
 balanceBtn.addEventListener("click", () => {
-  seccionB.classList.remove("hidden");
-  seccionC.classList.add("hidden");
-  seccionR.classList.add("hidden");
+  seccionB.style.display = "block";
+  seccionC.style.display = "none";
+  seccionR.style.display = "none";
 });
 
 categoriasBtn.addEventListener("click", () => {
-  seccionB.classList.add("hidden");
-  seccionC.classList.remove("hidden");
-  seccionR.classList.add("hidden");
+  seccionB.style.display = "none";
+  seccionC.style.display = "block";
+  seccionR.style.display = "none";
 });
 
 reportesBtn.addEventListener("click", () => {
-  seccionB.classList.add("hidden");
-  seccionC.classList.add("hidden");
-  seccionR.classList.remove("hidden");
+  seccionB.style.display = "none";
+  seccionC.style.display = "none";
+  seccionR.style.display = "block";
 });
 
 // ～✿Menú Hamburguesa✿～
