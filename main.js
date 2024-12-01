@@ -5,6 +5,8 @@ const reportesBtn = document.getElementById("reportes-btn");
 const seccionB = document.getElementById("seccion-balance");
 const seccionC = document.getElementById("seccion-categorias");
 const seccionR = document.getElementById("seccion-reportes");
+const filtrosBtn = document.getElementById("filtros-btn");
+const filtros = document.getElementById("filtros");
 
 balanceBtn.addEventListener("click", () => {
   seccionB.style.display = "block";
@@ -162,6 +164,16 @@ categorias.forEach((categoria) =>
 );
 btnAgregarCategoria.addEventListener("click", agregarCategoria);
 actualizarFiltros();
+
+filtrosBtn.addEventListener("click", () => {
+  if (filtrosBtn.innerText === "Ocultar Filtros") {
+    filtrosBtn.innerText = "Mostrar Filtros";
+    filtros.style.display = "none";
+  } else {
+    filtrosBtn.innerText = "Ocultar Filtros";
+    filtros.style.display = "block";
+  }
+});
 
 // ～✿Nuevas Operaciones✿～
 const seccionBalance = document.getElementById("seccion-balance");
