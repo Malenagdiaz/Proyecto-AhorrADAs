@@ -162,3 +162,139 @@ categorias.forEach((categoria) =>
 );
 btnAgregarCategoria.addEventListener("click", agregarCategoria);
 actualizarFiltros();
+
+// ～✿Nuevas Operaciones✿～
+const seccionBalance = document.getElementById("seccion-balance");
+const seccionOperacion = document.querySelector(".seccion-operacion");
+const divOp = document.querySelector(".div-op");
+const sinResultados = document.querySelector(".sinResultados");
+
+let operaciones = JSON.parse(localStorage.getItem("operaciones")) || [];
+let operacionEditando = null;
+
+function cargarOperacionesDesdeLocalStorage() {
+  console.log("Operaciones cargadas desde localStorage:", operaciones);
+  mostrarOperaciones();
+}
+
+function guardarOperacionesEnLocalStorage() {
+  localStorage.setItem("operaciones", JSON.stringify(operaciones));
+}
+
+function toggleSecciones() {
+  seccionBalance.classList.toggle("hidden");
+  seccionOperacion.classList.toggle("hidden");
+}
+
+function agregarOperacion() {
+  const descripcion = document.getElementById("descripcion-operacion").value;
+  const monto = parseFloat(document.getElementById("monto").value);
+  const tipo = document.getElementById("tipo-operacion").value;
+  const categoria = document.getElementById("cat-operacionCat").value;
+  const fecha = document.getElementById("fecha").value;
+
+  if (!descripcion || !categoria || !fecha || monto <= 0) return;
+
+  const operacion = { descripcion, monto, tipo, categoria, fecha };
+
+  if (operacionEditando === null) {
+    operaciones.push(operacion);
+  } else {
+    operaciones[operacionEditando] = operacion;
+    operacionEditando = null;
+  }
+
+  guardarOperacionesEnLocalStorage();
+  actualizarBalance();
+  mostrarOperaciones();
+  limpiarFormulario();
+  toggleSecciones();
+}
+
+function limpiarFormulario() {
+  document.getElementById("descripcion-operacion").value = "";
+  document.getElementById("monto").value = "";
+  document.getElementById("tipo-operacion").value = "Ganancia";
+  document.getElementById("cat-operacionCat").value = "";
+  document.getElementById("fecha").value = "";
+}
+
+function actualizarBalance() {
+  let ganancias = 0,
+    gastos = 0;
+
+  operaciones.forEach(({ monto, tipo }) => {
+    tipo === "Ganancia" ? (ganancias += monto) : (gastos += monto);
+  });
+
+  document.querySelector(".monto").textContent = `+$${ganancias}`;
+  document.querySelector(".gastos").textContent = `-$${gastos}`;
+  document.querySelector(".total").textContent = `$${ganancias - gastos}`;
+}
+
+function mostrarOperaciones() {
+  const contenedorOperaciones = document.getElementById("operaciones");
+  contenedorOperaciones.innerHTML = "";
+
+  if (operaciones.length === 0) {
+    sinResultados.classList.remove("hidden");
+    divOp.classList.add("hidden");
+  } else {
+    sinResultados.classList.add("hidden");
+
+    operaciones.forEach((operacion, index) => {
+      contenedorOperaciones.innerHTML += `
+        <div class="w-[100%] flex justify-between items-center text-[#edfffa] bg-[#6a9cde] p-4 rounded-lg">
+          <div class="flex justify-between items-center w-full p-2">
+            <p class="w-1/4">${operacion.descripcion}</p>
+            <p class="w-1/4">${operacion.categoria}</p>
+            <p class="w-1/5">${operacion.fecha}</p>
+            <p class="w-1/5">${operacion.tipo === "Ganancia" ? "+" : "-"}$${
+        operacion.monto
+      }</p>
+          </div>
+          <div class="flex flex-col items-center space-y-2">
+            <button class="btn-editar" onclick="editarOperacion(${index})">Editar</button>
+            <button class="btn-eliminar" onclick="eliminarOperacion(${index})">Eliminar</button>
+          </div>
+        </div>
+      `;
+    });
+
+    divOp.classList.remove("hidden");
+  }
+}
+
+function eliminarOperacion(index) {
+  operaciones.splice(index, 1);
+  guardarOperacionesEnLocalStorage();
+  actualizarBalance();
+  mostrarOperaciones();
+  if (operaciones.length === 0) divOp.classList.add("hidden");
+}
+
+function editarOperacion(index) {
+  const operacion = operaciones[index];
+  operacionEditando = index;
+
+  document.getElementById("descripcion-operacion").value =
+    operacion.descripcion;
+  document.getElementById("monto").value = operacion.monto;
+  document.getElementById("tipo-operacion").value = operacion.tipo;
+  document.getElementById("cat-operacionCat").value = operacion.categoria;
+  document.getElementById("fecha").value = operacion.fecha;
+
+  toggleSecciones();
+}
+
+cargarOperacionesDesdeLocalStorage();
+
+document
+  .querySelector(".btn-operacion")
+  .addEventListener("click", toggleSecciones);
+document
+  .querySelector(".btn-agregarOp")
+  .addEventListener("click", agregarOperacion);
+document
+  .querySelector(".btn-cancelarOp")
+  .addEventListener("click", toggleSecciones);
