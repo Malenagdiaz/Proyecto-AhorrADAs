@@ -184,6 +184,18 @@ const sinResultados = document.querySelector(".sinResultados");
 let operaciones = JSON.parse(localStorage.getItem("operaciones")) || [];
 let operacionEditando = null;
 
+function formatearFecha(fecha) {
+  const fechaObj = new Date(fecha);
+  let dia = fechaObj.getDate();
+  let mes = fechaObj.getMonth() + 1;
+  const año = fechaObj.getFullYear();
+
+  if (dia < 10) dia = "0" + dia;
+  if (mes < 10) mes = "0" + mes;
+
+  return `${dia}/${mes}/${año}`;
+}
+
 function cargarOperacionesDesdeLocalStorage() {
   console.log("Operaciones cargadas desde localStorage:", operaciones);
   mostrarOperaciones();
@@ -256,21 +268,23 @@ function mostrarOperaciones() {
 
     operaciones.forEach((operacion, index) => {
       contenedorOperaciones.innerHTML += `
-        <div class="w-[100%] flex justify-between items-center text-[#edfffa] bg-[#6a9cde] p-4 rounded-lg">
-          <div class="flex justify-between items-center w-full p-2">
-            <p class="w-1/4">${operacion.descripcion}</p>
-            <p class="w-1/4">${operacion.categoria}</p>
-            <p class="w-1/5">${operacion.fecha}</p>
-            <p class="w-1/5">${operacion.tipo === "Ganancia" ? "+" : "-"}$${
-        operacion.monto
-      }</p>
-          </div>
-          <div class="flex flex-col items-center space-y-2">
-            <button class="btn-editar" onclick="editarOperacion(${index})">Editar</button>
-            <button class="btn-eliminar" onclick="eliminarOperacion(${index})">Eliminar</button>
-          </div>
-        </div>
-      `;
+    <div class="w-[100%] flex justify-between items-center text-[#edfffa] bg-[#6a9cde] p-4 rounded-lg mb-4"> <!-- Aquí se añadió mb-4 para el margin-bottom -->
+      <div class="flex justify-between items-center w-full p-2">
+        <p class="w-1/4 font-['Montserrat']">${operacion.descripcion}</p>
+        <p class="w-1/4 font-['Montserrat']">${operacion.categoria}</p>
+        <p class="w-1/5 font-['Montserrat']">${formatearFecha(
+          operacion.fecha
+        )}</p>
+        <p class="w-1/5 font-['Montserrat']">${
+          operacion.tipo === "Ganancia" ? "+" : "-"
+        }$${operacion.monto}</p>
+      </div>
+      <div class="flex flex-row items-center space-x-2"> 
+        <button class="btn-editar font-['Montserrat']" onclick="editarOperacion(${index})">Editar</button>
+        <button class="btn-eliminar font-['Montserrat']" onclick="eliminarOperacion(${index})">Eliminar</button>
+      </div>
+    </div>
+  `;
     });
 
     divOp.classList.remove("hidden");
